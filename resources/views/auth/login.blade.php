@@ -1,0 +1,62 @@
+@extends('layout.auth')
+@section('content')
+<div class="container panel-body ">
+    <div class="row">
+        <div class="col-md-12"><br></br><br></br><br></br>
+            <div class="panel panel-default">
+                <div class="panel-heading text-center"><img src="/img/logo.png"></div>
+                
+                <div class="text-center">
+                <b>Warehouse Management System</b>
+                </div>
+                &nbsp
+
+                <div class="panel-body">
+                    <form class="form-horizontal" method="POST" action="{{ route('login') }}">
+                        {{ csrf_field() }}
+
+                        <div class="form-group{{ $errors->has('email') ? ' has-error' : '' }}">
+                            <div class="col-md-4 mx-auto">
+                                <input id="email" placeholder="Email" type="email" class="form-control text-center" name="email" value="{{ old('email') }}" required autofocus>
+
+                                @if ($errors->has('email'))
+                                    <span class="help-block">
+                                        <strong>{{ $errors->first('email') }}</strong>
+                                    </span>
+                                @endif
+                            </div>
+                        </div>
+
+                        <div class="form-group{{ $errors->has('password') ? ' has-error' : '' }}">
+
+                            <div class="col-md-4 mx-auto">
+                                <input id="password" placeholder="Password" type="password" class="form-control text-center" name="password" required>
+
+                                @if ($errors->has('password'))
+                                    <span class="help-block">
+                                        <strong>{{ $errors->first('password') }}</strong>
+                                    </span>
+                                @endif
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="text-center">
+                                <button type="submit" class="btn btn-primary">
+                                    Masuk
+                                </button>
+                            </div>
+                        </div>
+                        <div class="text-center">
+                        <b>Belum memiliki akun?
+                                <a href="{{ route('register') }}">
+                                    Daftar
+                                </a>
+                        </b>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+@endsection
