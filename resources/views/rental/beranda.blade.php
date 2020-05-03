@@ -1,7 +1,7 @@
 @extends('layout.master')
 
 @section('dashboard')
-   WMS
+   Rental
    <small>Beranda</small>
 @endsection
 

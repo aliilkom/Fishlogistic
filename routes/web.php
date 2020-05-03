@@ -16,7 +16,15 @@ Route::get('/', function () {
 });
 //Route Login & Register
 Auth::routes();
+//Route Profil
+Route::get('profil', function () {
+    return view('profil.index');
+});
 //Route WMS
-Route::get('berandawms', function () {
+Route::get('wmsberanda', function () {
     return view('wms.beranda');
+});
+//Route Rental
+Route::get('rentalberanda', function () {
+    return view('rental.beranda');
 });
