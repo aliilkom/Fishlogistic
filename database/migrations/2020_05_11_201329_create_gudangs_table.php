@@ -15,7 +15,7 @@ class CreateGudangsTable extends Migration
     {
         Schema::create('gudang', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->unsignedInteger('owner_id')->nullable();
+            $table->unsignedBigInteger('owner_id');
             $table->foreign('owner_id')->references('id')->on('users')->onDelete('cascade');
             $table->string('nama');
             $table->string('lokasi');

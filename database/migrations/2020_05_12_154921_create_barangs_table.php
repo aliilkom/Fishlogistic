@@ -15,10 +15,12 @@ class CreateBarangsTable extends Migration
     {
         Schema::create('barang', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->unsignedInteger('gudang_id')->nullable();
+            $table->unsignedBigInteger('gudang_id')->nullable();
             $table->foreign('gudang_id')->references('id')->on('gudang')->onDelete('cascade');
-            $table->integer('kategori_id')->unsigned();
+            $table->unsignedBigInteger('kategori_id')->nullable();
             $table->foreign('kategori_id')->references('id')->on('kategori')->onDelete('cascade');
+            $table->unsignedBigInteger('merek_id')->nullable();
+            $table->foreign('merek_id')->references('id')->on('merek')->onDelete('cascade');
             $table->string('nama');
             $table->string('sku');
             $table->integer('jumlah');
