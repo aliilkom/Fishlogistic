@@ -16,12 +16,22 @@ class RedirectIfAuthenticated
      * @param  string|null  $guard
      * @return mixed
      */
-    public function handle($request, Closure $next, $guard = null)
-    {
-        if (Auth::guard($guard)->check()) {
-            return redirect(RouteServiceProvider::HOME);
-        }
+    public function handle($request, Closure $next, $guard = null){
+        if (Auth::guard($guard)->check()){
 
-        return $next($request);
+            if(Auth::user()->ClassUser->ClassUser == 'Super Admin'){
+               return redirect('/superadmin');
+            }
+            if(Auth::user()->ClassUser->ClassUser == 'Owner'){
+                return redirect('/owner');
+            }
+            if(Auth::user()->ClassUser->ClassUser == 'Manager'){
+                return redirect('/manager');
+            }
+            if(Auth::user()->ClassUser->ClassUser == 'Admin'){
+                return redirect('/admin');
+            }
+       }
+       return $next($request);
     }
 }
